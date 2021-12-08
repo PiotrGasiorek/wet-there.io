@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <footer>
-        <p>Created by Piotr Gasiorek</p>
+    <footer className='footer'>
+        <p>Created by <a href='https://github.com/PiotrGasiorek' className='link'>Piotr Gasiorek</a></p>
     </footer>
   );
 }
