@@ -1,6 +1,6 @@
 import TabContent from './TabContent';
 
-function TabsContent({tabs, updateSavedLocations}) {
+function TabsContent({ tabs }) {
     return (
         <ul>
             {tabs.map(tab => {
@@ -8,7 +8,6 @@ function TabsContent({tabs, updateSavedLocations}) {
                     <TabContent 
                         tab={tab}
                         key={tab.id}
-                        updateSavedLocations={updateSavedLocations}
                     />
                 )
             })}

@@ -1,5 +1,9 @@
-function LocationCard({place, updateSavedLocations}) {
-    const handleClick = () => updateSavedLocations(place.id);
+import { useDispatch } from 'react-redux';
+import { toggleLocation } from '../../redux/savedLocations';
+
+function LocationCard({ place }) {
+    const dispatch = useDispatch();
+    const handleClick = () => dispatch(toggleLocation(place));
     return (
       <div>
           <h2>{place.current.temp_c}</h2>

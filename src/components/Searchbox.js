@@ -1,55 +1,29 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLocation } from '../redux/searchResult';
 
-const apiKey = '1d24a209e05a4580954110817213010';
-
-function Searchbox(props) {
-    const [location, setLocation] = useState('');
-
+function Searchbox() {
+    const [searchboxValue, setSearchboxValue] = useState('');
+    const dispatch = useDispatch();
     const handleOnChange = (e) => {
-        setLocation(e.target.value);
+        setSearchboxValue(e.target.value);
     }
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        getDataFromApi();
-    }    
+        dispatch(getLocation(searchboxValue));
+    }  
 
-    const handleApiResponse = (response) => {
-        response.error ? handleApiError(response) : applyIdToLocation(response);
-    }
-
-    const handleApiError = (error) => {
-        console.log('Its error boy', error);
-    }
-
-    const applyIdToLocation = (location) => {
-        let locationWithId = location;
-        locationWithId.id = Math.random();
-        console.log(locationWithId);
-        props.handleApiResponse(locationWithId);
-    }
-
-    const getDataFromApi = () => {
-        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=no`
-        fetch(url)
-            .then(response => response.json())
-            .then(data => handleApiResponse(data))
-            .catch(error => {
-                handleApiError(error);
-            });
-    }
-
-
-  return (
-    <form onSubmit={handleOnSubmit}>
-        <input 
-            type='text'
-            value={location}
-            onChange={handleOnChange}
-        />
-        <button>Search</button>
-    </form>
-  );
+    return (
+        <form onSubmit={handleOnSubmit}>
+            <input 
+                type='text'
+                value={searchboxValue}
+                onChange={handleOnChange}
+            />
+            <button>Search</button>
+        </form>
+    )
 }
 
 export default Searchbox;

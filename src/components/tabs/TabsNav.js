@@ -1,6 +1,6 @@
 import Tab from './Tab';
 
-function TabsNav({tabs, handleTabClick}) {
+function TabsNav({ tabs }) {
     return (
         <ul>
             {tabs.map(tab => {
@@ -8,7 +8,6 @@ function TabsNav({tabs, handleTabClick}) {
                     <Tab
                         key={tab.id}
                         tab={tab}
-                        handleTabClick={handleTabClick}
                     />
                 );
             })}

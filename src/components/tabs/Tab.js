@@ -1,17 +1,18 @@
-function Tab({ tab, handleTabClick }) {
+import { setActiveTab } from '../../redux/tabsSwitcher';
+import { useDispatch, useSelector } from 'react-redux';
+
+function Tab({ tab }) {
+  const dispatch = useDispatch();
+  const activeTabId = useSelector(state => state.tabsSwitcher.activeTabId);
+  const handleTabClick = (id) => {
+    dispatch(setActiveTab(id));
+  }
   return (
-    <li key={tab.id}>
+    <li key={tab.id} className={(tab.id !== activeTabId ? "tab-btn--unactive" : "")}>
         <button
             onClick={() => handleTabClick(tab.id)}
         >{tab.label}</button>
-        {tab.isActive ? '--active' : ''}
-        {/* <a 
-            onClick={handleTabClick}
-            href='#'
-        > 
-            {tab.label}
-        </a> */}
-  </li>
+    </li>
   );
 }
 

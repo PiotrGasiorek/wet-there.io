@@ -1,6 +1,6 @@
 import LocationCard from './LocationCard';
 
-function LocationCards({listOfLocations, updateSavedLocations}) {
+function LocationCards({listOfLocations}) {
   return (
     <div>
         {listOfLocations.map(place => {
@@ -8,7 +8,6 @@ function LocationCards({listOfLocations, updateSavedLocations}) {
                 <LocationCard 
                     place={place}
                     key={place.id}
-                    updateSavedLocations={updateSavedLocations}
                 />
             )
         })}
