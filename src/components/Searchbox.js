@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setActiveTab } from '../redux/tabsSwitcher';
 import { getLocation } from '../redux/searchResult';
 
 function Searchbox() {
@@ -12,16 +13,20 @@ function Searchbox() {
     const handleOnSubmit = (e) => {
         e.preventDefault();
         dispatch(getLocation(searchboxValue));
+        dispatch(setActiveTab(1));
     }  
-
     return (
-        <form onSubmit={handleOnSubmit}>
+        <form 
+            className='form'
+            onSubmit={handleOnSubmit}>
             <input 
                 type='text'
+                placeholder='Type here...'
                 value={searchboxValue}
                 onChange={handleOnChange}
+                className='input'
             />
-            <button>Search</button>
+            <button className='btn'>Search</button>
         </form>
     )
 }

@@ -12,7 +12,7 @@ function TabContent({ tab  }) {
   }
 
   return (
-    <div className={"tab" + (tab.id === activeTabId ? "tab--active" : "")}>
+    <div className={"tabs__content__wrapper " + (tab.id === activeTabId ? "tabs__content__wrapper--active" : "")}>
         {!isContentAvailable ? (
           <LocationCards 
             listOfLocations={tab.locations}

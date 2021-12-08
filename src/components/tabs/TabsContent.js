@@ -2,7 +2,7 @@ import TabContent from './TabContent';
 
 function TabsContent({ tabs }) {
     return (
-        <ul>
+        <div className='tabs__content'>
             {tabs.map(tab => {
                 return (
                     <TabContent 
@@ -11,7 +11,7 @@ function TabsContent({ tabs }) {
                     />
                 )
             })}
-        </ul>
+        </div>
     );
 }
   export default TabsContent;

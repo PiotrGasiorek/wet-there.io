@@ -4,15 +4,15 @@ import TabsNav from './TabsNav';
 
 function Tabs() {
   const { searchResult } = useSelector(state => state);
-  const { savedLocation } = useSelector(state => state);
+  const { savedLocations } = useSelector(state => state);
   // const { viewedLocations } = useSelector(state => state);
   return (
-    <div>
+    <div className='tabs'>
       <TabsNav 
-        tabs={[ searchResult, savedLocation]}
+        tabs={[ searchResult, savedLocations]}
       />
       <TabsContent 
-        tabs={[ searchResult, savedLocation]}
+        tabs={[ searchResult, savedLocations]}
       />
     </div>
   );

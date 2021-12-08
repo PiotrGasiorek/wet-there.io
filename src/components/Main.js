@@ -9,7 +9,7 @@ function Main() {
       setApiResponse(response);
     }
     return (
-        <main>
+        <main className='main'>
             <Header
                 handleApiResponse={handleApiResponse} 
             />
