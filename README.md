@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Visit [live wet-there.io](https://piotrgasiorek.github.io/wet-there.io/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
