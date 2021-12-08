@@ -1,12 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
-export const savedLocationSlice = createSlice({
-    name: 'savedLocation',
+export const savedLocationsSlice = createSlice({
+    name: 'savedLocations',
     initialState: {
         label: 'Saved locations',
         id: 2,
         message: {
-          title: 'You dont have any saved locations',
+          title: "You don't have any saved locations",
           paragraph: 'Add places which you are interested in so that you can access them easily later'
         },
         locations: []
@@ -14,15 +14,17 @@ export const savedLocationSlice = createSlice({
     reducers: {
         toggleLocation: (state, action) => {
             const clickedLocation = action.payload;
-            const isLocationSaved = state.locations.includes(clickedLocation)
+            const isLocationSaved = current(state.locations).indexOf(clickedLocation) !== -1;
             if(isLocationSaved){
-                state.locations = state.locations.filter( location => location !== clickedLocation);
+                state.locations = current(state.locations).filter( location => location !== clickedLocation)
             } else{
-                state.locations = [clickedLocation, ...state.locations];
+                state.locations = [clickedLocation, ...state.locations]
             }
+
+
         },
     }
 });
 
-export const { toggleLocation } = savedLocationSlice.actions;
-export default savedLocationSlice.reducer;
+export const { toggleLocation } = savedLocationsSlice.actions;
+export default savedLocationsSlice.reducer;
